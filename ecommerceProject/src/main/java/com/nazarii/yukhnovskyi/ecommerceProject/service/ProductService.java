@@ -15,6 +15,11 @@ public class ProductService {
 
 
     public List<Product> getProducts() {
-        return repo.findAll();
+        List<Product> results = repo.findAll();
+//        for (int i = 0; i < results.size(); i++) {
+//            System.out.println(results.get(i).toString());
+//        }
+
+        return results;
     }
 }
