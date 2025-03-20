@@ -1,0 +1,54 @@
+# IDE-Specific Files
+ecommerceProject/.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# Build Output
+target/
+**/target/
+build/
+**/build/
+dist/
+
+# Dependency Directories
+node_modules/
+
+# Environment-Specific Files
+.env
+.env.local
+.env.development
+.env.production
+
+# Log Files
+*.log
+logs/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Front-End Build Files
+.cache/
+
+# Testing and Coverage Reports
+coverage/
+*.lcov
+
+# Spring Boot-Specific Files
+src/main/resources/application.properties
+*.db
+*.h2.db
+
+# React-Specific Files
+node_modules/
+build/
+dist/
+.cache/
+.npm/
+.yarn/
