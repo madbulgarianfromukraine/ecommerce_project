@@ -1,5 +1,6 @@
 package com.nazarii.yukhnovskyi.ecommerceProject.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,13 +18,13 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     //@Column(name = "name", nullable = false)
     private String name;
 
-    //@Column(name = "dsc")
-    private String description;
+    @Column(name = "dsc")
+    private String desc;
 
     //@Column(name = "brand", nullable = false)
     private String brand;
@@ -35,6 +36,7 @@ public class Product {
     private String category;
 
     @Column(name = "releasedate", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate releaseDate;
 
     //@Column(name = "stock", nullable = false)
@@ -43,11 +45,11 @@ public class Product {
     //@Column(name = "available")
     private Boolean available;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,11 +62,11 @@ public class Product {
     }
 
     public String getDescription() {
-        return description;
+        return this.desc;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.desc = description;
     }
 
     public String getBrand() {
