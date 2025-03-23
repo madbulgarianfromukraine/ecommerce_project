@@ -76,7 +76,7 @@ const Product = () => {
         <img
           className="left-column-img"
           src={imageUrl}
-          alt={product.name}
+          alt={product.imgName}
         />
 
         <div className="right-column">
