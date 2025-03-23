@@ -19,7 +19,10 @@ const Product = () => {
           `http://localhost:8080/api/product/${id}`
         );
         setProduct(response.data);
-        if (response.data.imageName) {
+        console.log(response.data);
+        console.log(response.data.name);
+        if (response.data.name) {
+        
           fetchImage();
         }
       } catch (error) {
@@ -33,8 +36,6 @@ const Product = () => {
         { responseType: "blob" }
       );
       const imageur = URL.createObjectURL(response.data);
-      console.log("khuynia");
-      alert(imageur);
       setImageUrl(imageur);
     };
 
@@ -75,7 +76,7 @@ const Product = () => {
         <img
           className="left-column-img"
           src={imageUrl}
-          alt={product.imageName}
+          alt={product.name}
         />
 
         <div className="right-column">
