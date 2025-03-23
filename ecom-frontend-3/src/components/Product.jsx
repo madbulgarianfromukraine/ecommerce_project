@@ -32,7 +32,10 @@ const Product = () => {
         `http://localhost:8080/api/product/${id}/image`,
         { responseType: "blob" }
       );
-      setImageUrl(URL.createObjectURL(response.data));
+      const imageur = URL.createObjectURL(response.data);
+      console.log("khuynia");
+      alert(imageur);
+      setImageUrl(imageur);
     };
 
     fetchProduct();
@@ -80,7 +83,7 @@ const Product = () => {
             <span>{product.category}</span>
             <h1>{product.name}</h1>
             <h5>{product.brand}</h5>
-            <p>{product.description}</p>
+            <p>{product.dsc}</p>
           </div>
 
           <div className="product-price">
@@ -90,18 +93,18 @@ const Product = () => {
                 !product.productAvailable ? "disabled-btn" : ""
               }`}
               onClick={handlAddToCart}
-              disabled={!product.productAvailable}
+              disabled={!product.available}
             >
-              {product.productAvailable ? "Add to cart" : "Out of Stock"}
+              {product.available ? "Add to cart" : "Out of Stock"}
             </button>
             <h6>
               Stock Available :{" "}
               <i style={{ color: "green", fontWeight: "bold" }}>
-                {product.stockQuantity}
+                {product.stock}
               </i>
             </h6>
             <p className="release-date">
-              <h6>Product listed on:</h6>
+              Product listed on:
               <i> {new Date(product.releaseDate).toLocaleDateString()}</i>
             </p>
           </div>

@@ -22,9 +22,9 @@ const Navbar = ({ onSelectCategory, onSearch }) => {
     try {
       const response = await axios.get("http://localhost:8080/api/products");
       setSearchResults(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      //console.error("Error fetching data:", error);
     }
   };
 

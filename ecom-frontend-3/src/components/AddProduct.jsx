@@ -5,12 +5,12 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     name: "",
     brand: "",
-    description: "",
+    dsc: "",
     price: "",
     category: "",
-    stockQuantity: "",
-    releaseDate: "",
-    productAvailable: false,
+    stock: "",
+    releasedate: "",
+    available: false,
   });
   const [image, setImage] = useState(null);
 
@@ -26,7 +26,70 @@ const AddProduct = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    if (product.name == "" || product.name == null) {
+      alert("You must enter a product name!");
+      return;
+    }
+    
+    if (product.brand == "" || product.brand == null) {
+      product.brand = '-';
+    }
+    
+    if (product.dsc == "" || product.dsc == null) {
+      product.dsc = '-';
+    }
+    //alert("Price: " + product.price);
+    if (product.price == "" || product.price == null || parseFloat(product.price) <= 0) {
+      alert("Price cannot be empty or zero or negative!");
+      //return;
+      //product.price = '0.0'; // Use a number, not a string
+    }
+    
+    if (product.category == "" || product.category == null) {
+      product.category = 'Other';
+    }
+    
+    // stockQuantity and productAvailable ifs
+    if (product.stock == "" || product.stock == null) {
+      if(product.available){
+        alert("You must enter a stock quantity!");
+        return
+      }
+      product.stock = '0'; // Use a number, not a string
+    }
+    else if(parseInt(product.stock) < 0){
+      alert("Stock quantity cannot be negative!");
+      return;
+    }
+    else if(parseInt(product.stock) == 0 && product.available){
+      alert("Stock quantity cannot be zero if product is available!");
+      return;
+    }
+    else if(parseInt(product.stock) > 0 && !product.available){
+      alert("Stock quantity cannot be greater than zero if product is not available!");
+      return;
+    }
+    
+    // if forgot to specify release date, set it to today
+    if (product.releasedate == "" || product.releasedate == null) {
+  
+      if(confirm("Release date not specified. Do you want to set it to today?")){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        product.releasedate = today; // Use a valid date format
+      }
+      else{
+        return;
+      }
+    }
+
     const formData = new FormData();
+
     formData.append("imageFile", image);
     formData.append(
       "product",
@@ -40,11 +103,12 @@ const AddProduct = () => {
         },
       })
       .then((response) => {
-        console.log("Product added successfully:", response.data);
+        //console.log("Product added successfully:", response.data);
         alert("Product added successfully");
       })
       .catch((error) => {
-        console.error("Error adding product:", error);
+        //alert("Error adding product: " + toString(product.price));
+        //console.error("Error adding product:", error);
         alert("Error adding product");
       });
   };
@@ -88,7 +152,7 @@ const AddProduct = () => {
             type="text"
             className="form-control"
             placeholder="Add product description"
-            value={product.description}
+            value={product.dsc}
             name="description"
             onChange={handleInputChange}
             id="description"
@@ -127,6 +191,7 @@ const AddProduct = () => {
             <option value="Electronics">Electronics</option>
             <option value="Toys">Toys</option>
             <option value="Fashion">Fashion</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
@@ -139,7 +204,7 @@ const AddProduct = () => {
             className="form-control"
             placeholder="Stock Remaining"
             onChange={handleInputChange}
-            value={product.stockQuantity}
+            value={product.stock}
             name="stockQuantity"
             // value={`${stockAlert}/${stockQuantity}`}
             id="stockQuantity"
@@ -152,7 +217,7 @@ const AddProduct = () => {
           <input
             type="date"
             className="form-control"
-            value={product.releaseDate}
+            value={product.releasedate}
             name="releaseDate"
             onChange={handleInputChange}
             id="releaseDate"
@@ -177,7 +242,7 @@ const AddProduct = () => {
               type="checkbox"
               name="productAvailable"
               id="gridCheck"
-              checked={product.productAvailable}
+              checked={product.available}
               onChange={(e) =>
                 setProduct({ ...product, productAvailable: e.target.checked })
               }
