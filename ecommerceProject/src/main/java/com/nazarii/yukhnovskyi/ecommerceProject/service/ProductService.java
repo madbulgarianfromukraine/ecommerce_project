@@ -22,4 +22,8 @@ public class ProductService {
 
         return results;
     }
+
+    public Product getProduct(int id) {
+        return repo.findById((long) id).orElse(null);
+    }
 }

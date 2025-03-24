@@ -3,16 +3,14 @@ package com.nazarii.yukhnovskyi.ecommerceProject.controller;
 import com.nazarii.yukhnovskyi.ecommerceProject.model.Product;
 import com.nazarii.yukhnovskyi.ecommerceProject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     @Autowired
@@ -24,8 +22,18 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public List<Product> getProducts(){
-        return productService.getProducts();
+    public ResponseEntity<List<Product>> getProducts(){
+        return ResponseEntity.ok(productService.getProducts());
+    }
+
+    @GetMapping ("/product/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable int id){
+        Product prod = productService.getProduct(id);
+        if(prod == null){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(prod);
     }
 
 }
