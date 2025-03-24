@@ -72,7 +72,7 @@ const AddProduct = () => {
     }
     
     // if forgot to specify release date, set it to today
-    if (product.releasedate == "" || product.releasedate == null) {
+    if (product.releaseDate == "" || product.releaseDate == null) {
   
       if(confirm("Release date not specified. Do you want to set it to today?")){
         var today = new Date();
@@ -81,7 +81,7 @@ const AddProduct = () => {
         var yyyy = today.getFullYear();
 
         today = yyyy + '-' + mm + '-' + dd;
-        product.releasedate = today; // Use a valid date format
+        product.releaseDate = today; // Use a valid date format
       }
       else{
         return;
@@ -153,7 +153,7 @@ const AddProduct = () => {
             className="form-control"
             placeholder="Add product description"
             value={product.dsc}
-            name="description"
+            name="dsc"
             onChange={handleInputChange}
             id="description"
           />
@@ -205,7 +205,7 @@ const AddProduct = () => {
             placeholder="Stock Remaining"
             onChange={handleInputChange}
             value={product.stock}
-            name="stockQuantity"
+            name="stock"
             // value={`${stockAlert}/${stockQuantity}`}
             id="stockQuantity"
           />
@@ -217,7 +217,7 @@ const AddProduct = () => {
           <input
             type="date"
             className="form-control"
-            value={product.releasedate}
+            value={product.releaseDate}
             name="releaseDate"
             onChange={handleInputChange}
             id="releaseDate"
@@ -240,11 +240,11 @@ const AddProduct = () => {
             <input
               className="form-check-input"
               type="checkbox"
-              name="productAvailable"
+              name="available"
               id="gridCheck"
               checked={product.available}
               onChange={(e) =>
-                setProduct({ ...product, productAvailable: e.target.checked })
+                setProduct({ ...product, available: e.target.checked })
               }
             />
             <label className="form-check-label">Product Available</label>

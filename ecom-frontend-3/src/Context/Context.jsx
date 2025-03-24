@@ -23,13 +23,13 @@ export const AppProvider = ({ children }) => {
     if (existingProductIndex !== -1) {
       const updatedCart = cart.map((item, index) =>
         index === existingProductIndex
-          ? { ...item, quantity: item.quantity + 1 }
+          ? { ...item, stock: item.stock + 1 }
           : item
       );
       setCart(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     } else {
-      const updatedCart = [...cart, { ...product, quantity: 1 }];
+      const updatedCart = [...cart, { ...product, stock: 1 }];
       setCart(updatedCart);
       localStorage.setItem('cart', JSON.stringify(updatedCart));
     }

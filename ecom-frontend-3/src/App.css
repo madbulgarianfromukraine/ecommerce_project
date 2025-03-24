@@ -198,7 +198,7 @@ width: 100%;
 height: 100vh;
 display: grid;
 place-items: center;
-padding: 3rem;
+padding: 2rem;
 grid-template-columns: 0.5fr 0.5fr 0.5fr;
 grid-template-rows: 1fr 1fr 1fr;
 grid-column-gap: 2rem;
@@ -211,7 +211,6 @@ border-radius: .5rem;
 
 }
 .container{
-margin-top: 11%;
 max-width: 120rem;
 display: grid;
 grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
@@ -245,7 +244,7 @@ padding-top: 100px;
 .product-card{
   padding-top: 500px;
   width: 40px;
-  padding: 1rem;
+  padding: 0.5rem;
   height:  13rem;
   border-radius: 5%;
   margin: 100px;
@@ -255,8 +254,10 @@ padding-top: 100px;
 
  
 .containers {
+  /* max-width: auto;
+  max-height: 100vh; */
   width: 100%;
-  height: 150vh;
+  height: 100%;
   
   margin: 0 auto;
   padding: 15px;
@@ -271,7 +272,6 @@ padding-top: 100px;
   vertical-align: middle;
   width: 40rem;
   padding-top: 6rem;
-  /*padding-right: 20rem;*/
   margin: 20px;
 }
 .left-column {
@@ -427,7 +427,11 @@ padding-top: 100px;
 }
 /* <....................................Add Product................................................> */
 
-
+.update-product-container{
+  width: 100%;
+  height: 100vh;
+  background-color: var(--body_background);
+}
 .container{
   background-color: var(--body_background) !important;
   color: var(--body_color) !important;
@@ -444,7 +448,6 @@ padding-top: 100px;
   color: var(--para-clr);
   transform: translate(-50%, -50%);
   background-color: var(--body_background) !important;
-  /* padding-top: 12%; */
 }
 
 .center-container .image-control {
@@ -710,14 +713,4 @@ color: var(--quantity-clr);
 }
 .checkoutPopup {
   background-color: var(--body_background) !important;
-}
-
-
-/* <........................................Update Product.......................................> */
-
-.update-product-container {
-  background-color: var(--body_background);
-  width: 100%;
-  min-height: 150vh;
-  box-sizing: border-box; 
 }

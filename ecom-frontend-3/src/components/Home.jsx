@@ -87,7 +87,7 @@ const Home = ({ selectedCategory }) => {
                   height: "24rem",
                   boxShadow: "rgba(0, 0, 0, 0.24) 0px 2px 3px",
                   backgroundColor: productAvailable ? "#fff" : "#ccc",
-                  margin: "10px",
+                  margin: "5px",
                   display: "flex",
                   flexDirection: "column",
                 }}
