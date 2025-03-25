@@ -3,6 +3,7 @@ package com.nazarii.yukhnovskyi.ecommerceProject.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     //@Column(name = "name", nullable = false)
     private String name;
@@ -36,20 +37,28 @@ public class Product {
     private String category;
 
     @Column(name = "releasedate", nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
-    //@Column(name = "stock", nullable = false)
-    private Integer stock;
+    @Column(name = "stock", nullable = false)
+    private int stock;
 
     //@Column(name = "available")
     private Boolean available;
 
-    public int getId() {
+    // img attributes
+    private String imgName;
+    private String imgType;
+    @Lob //large object
+    //@Type(type="org.hibernate.type.BinaryType")
+    @Column(name = "img")
+    private byte[] img;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -61,11 +70,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDesc() {
         return this.desc;
     }
 
-    public void setDescription(String description) {
+    public void setDesc(String description) {
         this.desc = description;
     }
 
@@ -115,5 +124,29 @@ public class Product {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public String getImgType() {
+        return imgType;
+    }
+
+    public void setImgType(String imgType) {
+        this.imgType = imgType;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
     }
 }
