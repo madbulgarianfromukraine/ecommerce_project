@@ -1,11 +1,12 @@
-package com.nazarii.yukhnovskyi.ecommerceProject.service;
+package com.nazarii.yukhnovskyi.ecommerceProject_backend.service;
 
-import com.nazarii.yukhnovskyi.ecommerceProject.model.Product;
-import com.nazarii.yukhnovskyi.ecommerceProject.repo.ProductRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.nazarii.yukhnovskyi.ecommerceProject_backend.model.Product;
+import com.nazarii.yukhnovskyi.ecommerceProject_backend.repo.ProductRepo;
 
 import java.io.IOException;
 import java.util.List;

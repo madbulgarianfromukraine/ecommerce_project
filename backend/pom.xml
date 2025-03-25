@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.nazarii.yukhnovskyi</groupId>
-	<artifactId>ecommerceProject</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ecommerceProject</name>
+	<name>ecommerceProject backend</name>
 	<description>ecommerceSampleProject</description>
 	<url/>
 	<licenses>

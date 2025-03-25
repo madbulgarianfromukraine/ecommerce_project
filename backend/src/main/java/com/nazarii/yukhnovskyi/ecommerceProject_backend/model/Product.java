@@ -1,4 +1,4 @@
-package com.nazarii.yukhnovskyi.ecommerceProject.model;
+package com.nazarii.yukhnovskyi.ecommerceProject_backend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

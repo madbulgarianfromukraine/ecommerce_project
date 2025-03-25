@@ -1,13 +1,14 @@
-package com.nazarii.yukhnovskyi.ecommerceProject.controller;
+package com.nazarii.yukhnovskyi.ecommerceProject_backend.controller;
 
-import com.nazarii.yukhnovskyi.ecommerceProject.model.Product;
-import com.nazarii.yukhnovskyi.ecommerceProject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.nazarii.yukhnovskyi.ecommerceProject_backend.model.Product;
+import com.nazarii.yukhnovskyi.ecommerceProject_backend.service.ProductService;
 
 import java.util.List;
 

@@ -1,9 +1,10 @@
-package com.nazarii.yukhnovskyi.ecommerceProject.repo;
+package com.nazarii.yukhnovskyi.ecommerceProject_backend.repo;
 
-import com.nazarii.yukhnovskyi.ecommerceProject.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.nazarii.yukhnovskyi.ecommerceProject_backend.model.Product;
 
 import java.util.List;
 
